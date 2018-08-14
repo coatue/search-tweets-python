@@ -248,6 +248,7 @@ class ResultStream:
             logger.info("refreshing session")
             self.init_session()
 
+        time.sleep(1) # sleeping to get around rate-limit            
         resp = request(session=self.session,
                        url=self.endpoint,
                        rule_payload=self.rule_payload)
