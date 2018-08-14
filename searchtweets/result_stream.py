@@ -213,6 +213,7 @@ class ResultStream:
                                                 {"next": self.next_token})
                 logger.info("paging; total requests read so far: {}"
                             .format(self.n_requests))
+                time.sleep(1)
                 self.execute_request()
             else:
                 break
@@ -248,7 +249,7 @@ class ResultStream:
             logger.info("refreshing session")
             self.init_session()
 
-        time.sleep(1) # sleeping to get around rate-limit            
+        time.sleep(0.5) # sleeping to get around rate-limit            
         resp = request(session=self.session,
                        url=self.endpoint,
                        rule_payload=self.rule_payload)
